@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Меню ресторана</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Ссылка на файл стилей -->
+</head>
+<body>
+  <h1>Меню ресторана</h1>
+
+  <button id="addMenuButton">Добавить меню</button>
+
+  <div id="addMenuModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close">&times;</span>
+      <h2>Добавить меню</h2>
+      <form id="addMenuForm">
+        <label for="day">День недели:</label>
+        <select id="day" name="day_of_week">
+          <option value="Monday">Понедельник</option>
+          <option value="Tuesday">Вторник</option>
+          <option value="Wednesday">Среда</option>
+          <option value="Thursday">Четверг</option>
+          <option value="Friday">Пятница</option>
+          <option value="Saturday">Суббота</option>
+          <option value="Sunday">Воскресенье</option>
+        </select>
+        <label for="menu_number">Номер меню:</label>
+        <input type="number" id="menu_number" name="menu_number" required>
+        <button type="submit">Добавить</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="menu-list">
+    <div id="monday" class="day-section">
+      <h2>Понедельник</h2>
+      <div class="menu-cards"></div>
+    </div>
+    <div id="tuesday" class="day-section">
+      <h2>Вторник</h2>
+      <div class="menu-cards"></div>
+    </div>
+    <div id="wednesday" class="day-section">
+      <h2>Среда</h2>
+      <div class="menu-cards"></div>
+    </div>
+    <div id="thursday" class="day-section">
+      <h2>Четверг</h2>
+      <div class="menu-cards"></div>
+    </div>
+    <div id="friday" class="day-section">
+      <h2>Пятница</h2>
+      <div class="menu-cards"></div>
+    </div>
+    <div id="saturday" class="day-section">
+      <h2>Суббота</h2>
+      <div class="menu-cards"></div>
+    </div>
+    <div id="sunday" class="day-section">
+      <h2>Воскресенье</h2>
+      <div class="menu-cards"></div>
+    </div>
+  </div>
+
+  <div class="menu-card-template" style="display:none;">
+    <div class="menu-card" id="menu-card-${menu.id}">
+      <h3>Меню номер: ${menu.menu_number}</h3>
+      <div class="dish-cards-container">
+    </div>
+      <label for="dish-choice">Добавить блюдо:</label>
+      <select id="dish-choice-${menu.id}" class="dish-choice"></select>
+      <button class="add-dish-btn" id="add-dish-btn-${menu.id}">Добавить блюдо</button>
+      <span class="dish-name">${dish.name}</span>
+      <button class="delete-dish-btn" data-dish-id="${dish.id}">x</button>
+    </div>
+  </div>
+
+  <div id="notification" class="notification">
+    <p id="notification-message">Меню удалено успешно</p>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
